@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'DriveUp')</title>
+    <title>@yield('title', 'GarageNova')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,25 +13,33 @@
 </head>
 
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-brand" style="cursor: pointer;" onclick="window.location.href='{{ route('home') }}'">DriveUp</div>
-
-            <div class="nav-links">
-                <a href="{{ route('vehicules.index') }}" class="nav-link">
-                    Véhicules
-                </a>
-                <a href="{{ route('techniciens.index') }}" class="nav-link">
-                    Techniciens
-                </a>
-                <a href="{{ route('reparations.index') }}" class="nav-link">
-                    Réparations
-                </a>
+    <header class="app-header">
+        <div class="app-header-bar">
+            <div class="app-logo" onclick="window.location.href='{{ route('home') }}'">
+                <span class="app-logo-mark">GN</span>
+                <div class="app-logo-text">
+                    <span class="app-logo-title">GarageNova</span>
+                    <span class="app-logo-subtitle">Tableau de bord atelier</span>
+                </div>
             </div>
+            <nav class="app-nav">
+                <a href="{{ route('vehicules.index') }}" class="app-nav-link">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span>Véhicules</span>
+                </a>
+                <a href="{{ route('techniciens.index') }}" class="app-nav-link">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Techniciens</span>
+                </a>
+                <a href="{{ route('reparations.index') }}" class="app-nav-link">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span>Interventions</span>
+                </a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <main class="main-content">
+    <main class="main-shell">
         @if(session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
@@ -54,15 +62,15 @@
             </div>
         @endif
 
-        @yield('content')
+        <section class="page-shell">
+            @yield('content')
+        </section>
     </main>
-    <footer>
-        <div class="footer-section">
-            <div class="footer-content">
-                <span>&copy; {{ date('Y') }} DriveUp. Tous droits réservés.</span>
-            </div>
-            <div class="auteur">
-                <span>Developper par Yvan</span>
+
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div>
+                <span>&copy; {{ date('Y') }} GarageNova · Plateforme de suivi d’atelier</span>
             </div>
         </div>
     </footer>
